@@ -15,6 +15,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists/new
   def new
     @playlist = Playlist.new
+    @user = User.pluck(:name, :id)
   end
 
   # GET /playlists/1/edit
@@ -28,7 +29,7 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       if @playlist.save
-        format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
+        format.html { redirect_to @playlist, notice: 'Tu Playlist a sido creada.' }
         format.json { render :show, status: :created, location: @playlist }
       else
         format.html { render :new }
